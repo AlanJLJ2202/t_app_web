@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
+Route::middleware('auth:sanctum')->group(function () {
 
+    /**CATEGORIES */
+
+    Route::resource('categories', CategoryController::class);
+
+    // Ruta para obtener transacciones
+    Route::get('/transactions', [TransactionController::class, 'get_transactions']);
+
+    // Ruta para registrar una transacción
+    Route::post('/transactions', [TransactionController::class, 'register_transaction']);
+});

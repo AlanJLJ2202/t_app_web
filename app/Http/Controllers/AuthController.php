@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -15,12 +16,20 @@ class AuthController extends Controller
         try {
             $request->validate([
                 'name' => 'required|string',
-                'email' => 'required|email|unique:users',
                 'password' => 'required|string|min:6',
                 'birthday' => 'required|date',
             ]);
 
-            \Log::info($request->all());
+            $validate_user = User::where('email', $request->email)->first();
+            if ($validate_user) {
+                $data = [
+                    'status' => 'error',
+                    'message' => 'User Registration Failed!',
+                    'error' => 'Email already exists!',
+                ];
+
+                return response()->json($data, 409);
+            }
 
             DB::beginTransaction();
 
@@ -29,17 +38,27 @@ class AuthController extends Controller
             $user->birthday = $request->birthday;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->remember_token = $user->createToken('API')->plainTextToken;
+            $user->save();
+
+            $token = $user->createToken('API')->plainTextToken;
+            $user->remember_token = $token;
             $user->save();
 
             DB::commit();
 
-            return response()->json(['user' => $user], 201);
+            $data = [
+                'status' => 'success',
+                'user' => $user,
+                'remember_token' => $token
+            ];
+
+            return response()->json($data, 201);
         } catch (\Exception $e) {
             DB::rollback();
 
             $data = [
-                'message' => 'User Registration Failed!',
+                'status' => 'error',
+                'line' => $e->getLine(),
                 'error' => $e->getMessage(),
             ];
 
@@ -47,11 +66,44 @@ class AuthController extends Controller
         }
     }
 
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-    }*/
 
+    public function login(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required|string',
+            ]);
+
+            $credentials = $request->only('email', 'password');
+
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+                $token = $user->createToken('API')->plainTextToken;
+
+                $data = [
+                    'status' => 'success',
+                    'user' => $user,
+                    'remember_token' => $token
+                ];
+
+                return response()->json(['user' => $user, 'token' => $token], 200);
+            } else {
+                throw new ValidationException([], 'Credenciales inválidas', 401);
+            }
+        } catch (\Exception $e) {
+            $data = [
+                'status' => 'error',
+                'line' => $e->getLine(),
+                'error' => $e->getMessage(),
+            ];
+
+            return response()->json($data, 401);
+        }
+    }
+
+
+    //Escuchar, aprendiendo a negociar cap 33. Salió mal
 
 
 }
