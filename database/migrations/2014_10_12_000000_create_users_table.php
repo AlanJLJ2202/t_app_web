@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->date('birthday');
+            $table->decimal('balance', 10, 2)->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

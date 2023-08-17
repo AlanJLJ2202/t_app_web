@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->decimal("amount");
             $table->date("date");
             $table->string("type");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }
