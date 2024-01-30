@@ -1,0 +1,66 @@
+body 
+    background-color: black 
+
+h1
+    text-align: center    
+
+.login
+    &-contenido
+        display: flex
+        flex-direction: column 
+        justify-content: center
+        align-items: center
+        min-height: 100vh
+        padding: 10px
+        &-recuadro
+            width: 100%
+            max-width 500px
+            border: 1px solid green
+
+        .informacion
+            padding: 35px 38px
+            h1
+                text-align: center
+                color: green
+                margin-bottom: 20px
+            .field
+                margin-bottom: 20px
+                label
+                    display: block
+                    margin-bottom: 5px
+                    color: green
+                input
+                    display: block
+                    width: 100%
+                    padding: 5px
+                    border: 1px solid green
+                    border-radius: 5px
+                    background-color: black
+                    color: white
+                    &:focus
+                        outline: none
+                        border-color: rgb(9, 220, 9)
+            .boton
+                padding 15px 0
+                text-align: center
+                color: red
+                button
+                    padding: 10px 20px
+                    border: 1px solid green
+                    border-radius: 5px
+                    background-color: black
+                    color: green
+                    &:focus
+                        outline: none
+                        border-color: green
+                    &:hover
+                        background-color: green
+                        color: black
+                    &:active
+                        background-color: green
+                        color: black
+                    &:disabled
+                        background-color: #ccc
+                        color: #666
+                        border-color: #ccc
+                        cursor: not-allowed

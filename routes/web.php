@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccesoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('/login',[AccesoController::class, 'login'])->name('login');
+Route::get('/admin',[AccesoController::class, 'view_index'])->name('index');
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+
+Route::get('/portafolio', function () {
+    return view('portafolio');
+});
+
+

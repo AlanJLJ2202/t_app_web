@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -89,7 +90,13 @@ class AuthController extends Controller
 
                 return response()->json(['user' => $user, 'token' => $token], 200);
             } else {
-                throw new ValidationException([], 'Credenciales inválidas', 401);
+                $data = [
+                    'status' => 'error',
+                    'message' => 'Login Failed!',
+                    'error' => 'Invalid Credentials!',
+                ];
+
+                return response()->json($data, 401);
             }
         } catch (\Exception $e) {
             $data = [

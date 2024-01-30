@@ -1,4 +1,12 @@
 const mix = require('laravel-mix');
+mix.disableNotifications();
+mix.browserSync({
+   proxy: 't_app.test',
+    port: 22051
+});
+
+mix.stylus('resources/stylus/global.styl', 'public/css').version().options({ processCssUrls: false });
+
 
 /*
  |--------------------------------------------------------------------------
