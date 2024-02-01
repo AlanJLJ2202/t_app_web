@@ -14,7 +14,10 @@ class TransactionsController extends Controller
 
     public function get_transactions(){
         try {
-            $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+
+
+            //$transactions = Transaction::where('user_id', Auth::user()->id)->get();
+            $transactions = Transaction::where('user_id', 1)->with('category')->get();
 
             $data = [
                 'status' => 'success',
@@ -28,12 +31,17 @@ class TransactionsController extends Controller
                 'error' => $e->getMessage()
             ];
 
+            \Log::error($e->getMessage());
+
             return response()->json($data, 500);
         }
     }
 
 
     public function register_transaction(Request $request){
+
+        \Log::info($request->all());
+
         try {
             $request->validate([
                 'amount' => 'required|numeric',
@@ -42,7 +50,7 @@ class TransactionsController extends Controller
             DB::beginTransaction();
 
             // Get user authenticated
-            $user = User::find(Auth::user()->id);
+            $user = User::find(1);
             // Create transaction
             $transaction = new Transaction();
             $transaction->user_id = $user->id;
@@ -55,7 +63,7 @@ class TransactionsController extends Controller
             //Create new balance
             $balance = new Balance();
             $balance->user_id = $user->id;
-            $balance->amount = $request->type == 'income' ? 
+            $balance->amount = $request->type == 'ingreso' ? 
                                $user->balance + $request->amount : 
                                $user->balance - $request->amount;
             $balance->save();
@@ -79,6 +87,8 @@ class TransactionsController extends Controller
                 'status' => 'error',
                 'error' => $e->getMessage()
             ];
+
+            \Log::error($e->getMessage());
 
             return response()->json($data, 500);
         }

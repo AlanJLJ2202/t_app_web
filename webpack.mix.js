@@ -6,6 +6,8 @@ mix.browserSync({
 });
 
 mix.stylus('resources/stylus/global.styl', 'public/css').version().options({ processCssUrls: false });
+mix.stylus('resources/stylus/dashboard.styl', 'public/css').version().options({ processCssUrls: false });
+
 
 
 /*
@@ -18,6 +20,8 @@ mix.stylus('resources/stylus/global.styl', 'public/css').version().options({ pro
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix.js(['resources/js/transaccion.js'], 'public/js/transaccion.js').vue(2).version();
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [

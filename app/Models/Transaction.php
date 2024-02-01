@@ -12,4 +12,8 @@ class Transaction extends Model
     protected $table = 'transactions';
 
     protected $fillable = ['user_id', 'amount'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

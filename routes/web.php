@@ -19,13 +19,17 @@ Route::post('/login',[AccesoController::class, 'login'])->name('login');
 Route::get('/admin',[AccesoController::class, 'view_index'])->name('index');
 
 
-Route::get('/', function () {
+Route::get('/x', function () {
     return view('login');
 });
 
 
 Route::get('/portafolio', function () {
     return view('portafolio');
+});
+
+Route::get('/', function () {
+    return view('dashboard');
 });
 
 

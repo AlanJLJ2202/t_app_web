@@ -27,6 +27,11 @@ Route::get('/test', function () {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/transactions', [TransactionsController::class, 'get_transactions']);
+Route::post('/transactions', [TransactionsController::class, 'register_transaction']);
+
+
+
 Route::middleware('auth:sanctum')->group(function () {
 
     /**CATEGORIES */
@@ -34,8 +39,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('categories', CategoriesController::class);
 
     // Ruta para obtener transacciones
-    Route::get('/transactions', [TransactionsController::class, 'get_transactions']);
 
     // Ruta para registrar una transacción
-    Route::post('/transactions', [TransactionsController::class, 'register_transaction']);
 });
