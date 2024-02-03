@@ -1,14 +1,20 @@
 body
     background-color: rgb(0, 0, 0)
 
+h1
+    color: gold
 h2
-    //text-align: center
-    color: blue
+    color: green
     margin-bottom: 20px
+h3
+    color: red
+
 
 .form
-    //background-color: grey
-    width: 200px
+    width: 500px
+    border: 1px solid #ccc
+    padding: 20px
+    
     .field
         display: inline-block
         margin-bottom: 10px
@@ -16,25 +22,44 @@ h2
     .field label
             display: block
 
+// button
+//     padding: 10px
+//     margin-top: 20px
+//     cursor: pointer
+//     color: white
+//     border: none
+//     border-radius: 5px
+//     &:hover
+//         background-color: #45a049
+
 
 .resumen
     p
         color: white
 
 
-h3
-    color: green
-
 .item
+    display: flex
+    flex-direction: row
+    padding: 10px
+    width: 500px
+    justify-content: space-between
+    margin: 30px 10px
+    border: 1px solid #ccc
+    box-shadow: 5px 5px 15px #ccc
     p
         margin-right: 20px
+        flex: 1
+    .description
+        flex: 2
 
 .ingreso
-    color: green
-    
+    color: white
+    background-color: rgba(0, 128, 0, 0.431)
 
 .egreso
-    color: red
+    color: white
+    background-color: rgba(254, 4, 4, 0.435)
 
 label
     color: white
@@ -58,3 +83,18 @@ label
     .egreso
         background-color: red
 
+
+//responsive
+@media (max-width: 600px)
+    .form
+        width: 100%
+    .field
+        width: 100%
+    .item
+        width: 90%
+        flex-direction: column
+    // .checkboxs
+    //     flex-direction: column
+    //     button
+    //         width: 100%
+    //         margin-bottom: 10px

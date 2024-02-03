@@ -1,12 +1,20 @@
 body {
   background-color: #000;
 }
+h1 {
+  color: #ffd700;
+}
 h2 {
-  color: #00f;
+  color: #008000;
   margin-bottom: 20px;
 }
+h3 {
+  color: #f00;
+}
 .form {
-  width: 200px;
+  width: 500px;
+  border: 1px solid #ccc;
+  padding: 20px;
 }
 .form .field {
   display: inline-block;
@@ -18,17 +26,30 @@ h2 {
 .resumen p {
   color: #fff;
 }
-h3 {
-  color: #008000;
+.item {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 500px;
+  justify-content: space-between;
+  margin: 30px 10px;
+  border: 1px solid #ccc;
+  box-shadow: 5px 5px 15px #ccc;
 }
 .item p {
   margin-right: 20px;
+  flex: 1;
+}
+.item .description {
+  flex: 2;
 }
 .ingreso {
-  color: #008000;
+  color: #fff;
+  background-color: rgba(0,128,0,0.431);
 }
 .egreso {
-  color: #f00;
+  color: #fff;
+  background-color: rgba(254,4,4,0.435);
 }
 label {
   color: #fff;
@@ -53,5 +74,17 @@ label {
 }
 .checkboxs .egreso {
   background-color: #f00;
+}
+@media (max-width: 600px) {
+  .form {
+    width: 100%;
+  }
+  .field {
+    width: 100%;
+  }
+  .item {
+    width: 90%;
+    flex-direction: column;
+  }
 }
 

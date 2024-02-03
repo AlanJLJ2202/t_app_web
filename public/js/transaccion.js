@@ -2178,7 +2178,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("h1", [_vm._v("Dashboard")]), _vm._v(" "), _c("div", {
     staticClass: "resumen"
-  }, [_c("h2", [_vm._v("Resumen")]), _vm._v(" "), _c("p", [_vm._v("Ahorro: $" + _vm._s(_vm.ahorro - _vm.gastos))]), _vm._v(" "), _c("p", [_vm._v("Gastos: $" + _vm._s(_vm.gastos))])]), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v("Resumen")]), _vm._v(" "), _c("h2", [_vm._v("Ahorro: $" + _vm._s(_vm.ahorro - _vm.gastos))]), _vm._v(" "), _c("h3", [_vm._v("Gastos: $" + _vm._s(_vm.gastos))])]), _vm._v(" "), _c("div", {
     staticClass: "form"
   }, [_c("div", {
     staticClass: "field"
@@ -2329,10 +2329,14 @@ var render = function render() {
         return _vm.saveTransaction();
       }
     }
-  }, [_vm._v("Guardar")])]), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Movimientos")]), _vm._v(" "), _vm._l(_vm.movimientos, function (movimiento) {
+  }, [_vm._v("Guardar")])]), _vm._v(" "), _c("div", [_c("h1", [_vm._v("Movimientos")]), _vm._v(" "), _vm._l(_vm.movimientos, function (movimiento) {
     return _c("div", {
       "class": movimiento.type == "ingreso" ? "item ingreso" : "item egreso"
-    }, [_c("p", [_vm._v("-------------------------------------------")]), _vm._v(" "), _c("p", [_vm._v("$" + _vm._s(movimiento.amount))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.date))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.description))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(movimiento.category.name))])]);
+    }, [_c("p", {
+      staticClass: "amount"
+    }, [_vm._v("$" + _vm._s(movimiento.amount))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.date))]), _vm._v(" "), _c("p", {
+      staticClass: "description"
+    }, [_vm._v(_vm._s(movimiento.description))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(movimiento.category.name))])]);
   })], 2), _vm._v(" "), _c("br")]);
 };
 var staticRenderFns = [];

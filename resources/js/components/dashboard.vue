@@ -1,13 +1,11 @@
 <template>
     <div>
         <h1>Dashboard</h1>
-
         <div class="resumen">
-            <h2>Resumen</h2>
-            <p>Ahorro: ${{ ahorro - gastos }}</p>
-            <p>Gastos: ${{ gastos }}</p>
+            <h1>Resumen</h1>
+            <h2>Ahorro: ${{ ahorro - gastos }}</h2>
+            <h3>Gastos: ${{ gastos }}</h3>
         </div>
-
         <div class="form">
                 <div class="field">
                     <label for="">Monto</label>
@@ -43,24 +41,19 @@
                 <br>
                 <button @click="saveTransaction()">Guardar</button>
         </div>
-
         <div>
-            <h2>Movimientos</h2>
+            <h1>Movimientos</h1>
             <div v-for="movimiento in movimientos" :class="movimiento.type == 'ingreso' ? 'item ingreso' : 'item egreso' ">
-                    <p>-------------------------------------------</p>
-                    <p>${{ movimiento.amount }}</p>
+                    <p class="amount">${{ movimiento.amount }}</p>
                     <!-- <p>-</p> -->
                     <p>{{ movimiento.date }}</p>
                     <!-- <p>-</p> -->
-                    <p>{{ movimiento.description }}</p>
+                    <p class="description">{{ movimiento.description }}</p>
                     <!-- <p>-</p> -->
                     <p>Categoria: {{ movimiento.category.name }}</p>
             </div>
         </div>
         <br>
-
-       
-        
     </div>
 </template>
 
