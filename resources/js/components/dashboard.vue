@@ -1,10 +1,18 @@
 <template>
     <div>
         <h1>Dashboard</h1>
-        <div class="resumen">
-            <h1>Resumen</h1>
-            <h2>Ahorro: ${{ ahorro - gastos }}</h2>
-            <h3>Gastos: ${{ gastos }}</h3>
+        <div class="card">
+            <div class="row">
+                <p>${{ ahorro - gastos }}</p>
+                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard-500x281.png"/>
+            </div>
+            <h2>$ {{ gastos }}</h2>
+
+            <div class="footer">
+                <p>123***************789</p>
+                <p>Ruth y Alan</p>
+            </div>
+        
         </div>
         <div class="form">
                 <div class="field">
