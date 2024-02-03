@@ -5,6 +5,16 @@ h2 {
   color: #00f;
   margin-bottom: 20px;
 }
+.form {
+  width: 200px;
+}
+.form .field {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.form .field label {
+  display: block;
+}
 .resumen p {
   color: #fff;
 }
@@ -27,13 +37,21 @@ label {
   display: inline-block;
 }
 .checkboxs {
-  display: inline-block;
-  margin-bottom: 10px;
+  display: flex;
+  margin-top: 20px;
 }
 .checkboxs button {
+  display: inline-block;
   cursor: pointer;
+  width: 100px;
 }
 .checkboxs .selected {
+  color: #fff;
+}
+.checkboxs .ingreso {
+  background-color: #008000;
+}
+.checkboxs .egreso {
   background-color: #f00;
 }
 

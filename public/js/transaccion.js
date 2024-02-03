@@ -2088,7 +2088,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    //this.fetchMovimientos();
+    this.fetchMovimientos();
   },
   methods: {
     fetchMovimientos: function () {
@@ -2137,6 +2137,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/transactions', this.transaction);
             case 2:
               response = _context2.sent;
+              //console.log('Transaction');
+              //console.log(this.transaction);
+
               if (response.data.status === 'success') {
                 this.fetchMovimientos();
               } else {
@@ -2175,11 +2178,9 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("h1", [_vm._v("Dashboard")]), _vm._v(" "), _c("div", {
     staticClass: "resumen"
-  }, [_c("h2", [_vm._v("Resumen")]), _vm._v(" "), _c("p", [_vm._v("Ahorro: $" + _vm._s(_vm.ahorro - _vm.gastos))]), _vm._v(" "), _c("p", [_vm._v("Gastos: $" + _vm._s(_vm.gastos))])]), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Movimientos")]), _vm._v(" "), _vm._l(_vm.movimientos, function (movimiento) {
-    return _c("div", {
-      "class": movimiento.type == "ingreso" ? "item ingreso" : "item egreso"
-    }, [_c("p", [_vm._v("-------------------------------------------")]), _vm._v(" "), _c("p", [_vm._v("$" + _vm._s(movimiento.amount))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.date))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.description))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(movimiento.category.name))])]);
-  })], 2), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Resumen")]), _vm._v(" "), _c("p", [_vm._v("Ahorro: $" + _vm._s(_vm.ahorro - _vm.gastos))]), _vm._v(" "), _c("p", [_vm._v("Gastos: $" + _vm._s(_vm.gastos))])]), _vm._v(" "), _c("div", {
+    staticClass: "form"
+  }, [_c("div", {
     staticClass: "field"
   }, [_c("label", {
     attrs: {
@@ -2207,9 +2208,19 @@ var render = function render() {
   })]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "checkboxs"
   }, [_c("button", {
-    "class": _vm.transaction.type == "ingreso" ? "selected ingreso" : ""
+    "class": _vm.transaction.type == "ingreso" ? "selected ingreso" : "",
+    on: {
+      click: function click($event) {
+        _vm.transaction.type = "ingreso";
+      }
+    }
   }, [_vm._v("Ingreso")]), _vm._v(" "), _c("button", {
-    "class": _vm.transaction.type == "egreso" ? "selected egreso" : ""
+    "class": _vm.transaction.type == "egreso" ? "selected egreso" : "",
+    on: {
+      click: function click($event) {
+        _vm.transaction.type = "egreso";
+      }
+    }
   }, [_vm._v("Egreso")])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
@@ -2318,7 +2329,11 @@ var render = function render() {
         return _vm.saveTransaction();
       }
     }
-  }, [_vm._v("Guardar")])]);
+  }, [_vm._v("Guardar")])]), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Movimientos")]), _vm._v(" "), _vm._l(_vm.movimientos, function (movimiento) {
+    return _c("div", {
+      "class": movimiento.type == "ingreso" ? "item ingreso" : "item egreso"
+    }, [_c("p", [_vm._v("-------------------------------------------")]), _vm._v(" "), _c("p", [_vm._v("$" + _vm._s(movimiento.amount))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.date))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(movimiento.description))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(movimiento.category.name))])]);
+  })], 2), _vm._v(" "), _c("br")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

@@ -17,7 +17,10 @@ class TransactionsController extends Controller
 
 
             //$transactions = Transaction::where('user_id', Auth::user()->id)->get();
-            $transactions = Transaction::where('user_id', 1)->with('category')->get();
+            $transactions = Transaction::where('user_id', 1)->with('category')
+            ->orderBy('date', 'desc')
+            ->orderBy('created_at', 'desc') // Luego, si son del mismo día, ordenamos por 'created_at' en orden descendente
+            ->get();
 
             $data = [
                 'status' => 'success',
