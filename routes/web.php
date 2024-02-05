@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccesoController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +17,19 @@ use App\Http\Controllers\AccesoController;
 */
 
 
-Route::post('/login',[AccesoController::class, 'login'])->name('login');
+Route::match(['GET','POST'],'/', [AccesoController::class, 'login'])->name('login');
+//logout
+Route::get('/logout', [AccesoController::class, 'logout'])->name('logout');
+
 Route::get('/admin',[AccesoController::class, 'view_index'])->name('index');
-
-
-Route::get('/x', function () {
-    return view('login');
-});
-
 
 Route::get('/portafolio', function () {
     return view('portafolio');
 });
 
-Route::get('/', function () {
-    return view('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [TransactionsController::class, 'view_dashboard'])->name('dashboard');
+    Route::get('/api/transactions', [TransactionsController::class, 'get_transactions']);
+    Route::post('/api/transactions', [TransactionsController::class, 'register_transaction']);
 });
-
 

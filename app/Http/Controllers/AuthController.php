@@ -15,12 +15,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         try {
-            $request->validate([
-                'name' => 'required|string',
-                'password' => 'required|string|min:6',
-                'birthday' => 'required|date',
-            ]);
-
             $validate_user = User::where('email', $request->email)->first();
             if ($validate_user) {
                 $data = [
@@ -71,10 +65,10 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            $request->validate([
+            /*$request->validate([
                 'email' => 'required|email',
                 'password' => 'required|string',
-            ]);
+            ]);*/
 
             $credentials = $request->only('email', 'password');
 

@@ -27,8 +27,7 @@ Route::get('/test', function () {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/transactions', [TransactionsController::class, 'get_transactions']);
-Route::post('/transactions', [TransactionsController::class, 'register_transaction']);
+
 
 
 

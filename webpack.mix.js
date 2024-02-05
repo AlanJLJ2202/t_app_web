@@ -7,6 +7,7 @@ mix.browserSync({
 
 mix.stylus('resources/stylus/global.styl', 'public/css').version().options({ processCssUrls: false });
 mix.stylus('resources/stylus/dashboard.styl', 'public/css').version().options({ processCssUrls: false });
+mix.stylus('resources/stylus/dashboard_cargos.styl', 'public/css').version().options({ processCssUrls: false });
 
 
 

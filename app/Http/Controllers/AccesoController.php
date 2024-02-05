@@ -2,64 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class AccesoController extends Controller
 {
     public function login(Request $request){
         
 		\Log::info('Request', $request->all());
-		\DB::beginTransaction();
 		try {
-				$rules = array(
-					'email' => 'required|email',
-					'password' => 'required',
 
-				);
+				//if method is post
+				if ($request->isMethod('POST')) {
 
-				$validator = Validator::make($request->all(), $rules);
 
-				if($validator->fails())
-				{
-					$alert = array(
-						'estatus' => 'warning',
-						'mensaje' => 'Fields are required'
-					);
-					return redirect()->back()
-					->with('alert', $alert)
-					->withInput();
+					\Log::info('1');
+
+					$validator = Validator::make($request->all(), [
+						'email' => 'required',
+						'password' => 'required'
+					]);
+
+					\Log::info('2');
+
+					if ($validator->fails()) {
+						$alert = array(
+							'estatus' => 400,
+							'msg' => 'Los campos son requeridos'
+						);
+						return redirect()->back()->with('alert', $alert)->withInput();
+					}
+
+					\Log::info('3');
+
+					$credentials = $request->only('email', 'password');
+					if (Auth::attempt($credentials)) {
+						// Authentication passed...
+						\Log::info('4');
+						$alert = array(
+							'estatus' => 200,
+							'msg' => 'Welcome to the system'
+						);
+						return redirect()->route('dashboard')->with('alert', $alert);
+					} else {
+						\Log::info('5');
+						$alert = array(
+							'estatus' => 400,
+							'msg' => 'El usuario o la contraseña son incorrectos'
+						);
+						return redirect()->back()->with('alert', $alert)->withInput();
+					}
 				}
 
-				\Log::info('Success', $request->all());
+				return view('login');
 
-				$email = $request->input('email');
-				$password = $request->input('password');
-				$credentials = array('email' => $email, 'password' => $password);
-
-				if (Auth::attempt($credentials))
-				{
-					$alert = array(
-						'estatus' => 'success',
-						'mensaje' => 'Welcome'
-					);
-					\DB::commit();
-
-					\Log::info('Success', $alert);
-
-					return redirect()->route('view_admin')
-					->with('alert', $alert)
-					->withInput();
-				}
-
-				$alert = array(
-					'mensaje' => 'There is no user with that data',
-					'estatus' => 'warning',
-				);
-
-				\Log::info('Error', $alert);
-
-				return redirect()->back()
-				->with('alert', $alert)
-				->withInput();
 			
 		} catch (\Exception $e) {
 			\DB::rollback();
@@ -78,6 +76,11 @@ class AccesoController extends Controller
 	public function view_index(){
 		//Auth::logout();
 		return view('layout');
+	}
+
+	public function logout(){
+		Auth::logout();
+		return redirect()->route('login');
 	}
 
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Dashboard</h1>
+        <button @click="logout()">Cerrar sesion</button>
         <div class="card">
             <div class="row">
                 <p>${{ ahorro - gastos }}</p>
@@ -69,10 +69,11 @@
 import axios from 'axios';
 
     export default {
+        props: ['vuser'],
         data() {
             return {
-                gastos: 1000,
-                ahorro: 2000,
+                gastos: 0,
+                ahorro: 0,
                 movimientos: [],
                 transaction: {
                     amount: null,
@@ -80,15 +81,23 @@ import axios from 'axios';
                     type: '',
                     category_id: 'Sueldo',
                     description: ''
-                }
+                },
+                user: null
             }
         },
         mounted() {
+            this.user = this.vuser;
             this.fetchMovimientos();
         },
         methods: {
             fetchMovimientos: async function() {
+
+                //send crsf token
+                
+                //axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
                 const response = await axios.get('/api/transactions');
+
                 if(response.data.status === 'success'){
                     this.movimientos = response.data.transactions;
 
@@ -118,6 +127,10 @@ import axios from 'axios';
                 }else{
                     alert('Error al guardar el movimiento');
                 }
+            },
+            logout: function() {
+                localStorage.removeItem('token');
+                window.location.href = '/';
             }
         }
     }

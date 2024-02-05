@@ -12,12 +12,18 @@ use Illuminate\Support\Facades\DB;
 class TransactionsController extends Controller
 {
 
+    public function view_dashboard(){
+        return view('dashboard');
+    }
+
     public function get_transactions(){
         try {
 
+            $user = Auth::user();
+            \Log::info($user);
 
             //$transactions = Transaction::where('user_id', Auth::user()->id)->get();
-            $transactions = Transaction::where('user_id', 1)->with('category')
+            $transactions = Transaction::where('user_id', Auth::user()->id)->with('category')
             ->orderBy('date', 'desc')
             ->orderBy('created_at', 'desc') // Luego, si son del mismo día, ordenamos por 'created_at' en orden descendente
             ->get();
