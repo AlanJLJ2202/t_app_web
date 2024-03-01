@@ -3,12 +3,44 @@
         <div class="header">
             <button @click="logout()">Cerrar sesion</button>
             <p class="subtitle">Saldo restante</p>
-            <p>$ {{ saldo }}</p>
+            <p>$ {{ cargos_total - abonos_total }}</p>
         </div>
-
         <div class="content">
+            <div class="form">
+                <div class="field">
+                    <label for="">Monto</label>
+                    <input type="number" v-model="transaction.amount">
+                </div>
+                <div class="checkboxs">
+                    <button :class="transaction.type == 'abono' ? 'selected ingreso' : ''" @click="transaction.type = 'abono'">Abono</button>
+                    <button :class="transaction.type == 'cargo' ? 'selected egreso' : ''" @click="transaction.type = 'cargo'">Cargo</button>
+                </div>
+                <br>
+                <div class="field">
+                    <label for="">Fecha</label>
+                    <input type="date" v-model="transaction.date">
+                </div>
+                <div class="field">
+                    <label for="">Categoria</label>
+                    <select name="" id="" v-model="transaction.category_id">
+                        <option value="7">Prestamo</option>
+                        <option value="8">Compu</option>
+                        <option value="9">Anillo</option>
+                        <option value="10">Frasco</option>
+                        <option value="11">Coppel</option>
+                        <option value="12">Otro</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="">Descripción</label>
+                    <input type="textarea" v-model="transaction.description">
+                </div>
+                <button @click="saveTransaction()">Guardar</button>
+        </div>
+        
+        <br> 
             <h1>Movimientos</h1>
-            <div v-for="movimiento in movimientos" :class="movimiento.type == 'ingreso' ? 'item ingreso' : 'item egreso' ">
+            <div v-for="movimiento in movimientos" :class="movimiento.type == 'cargo' ? 'item egreso' : 'item ingreso' ">
                     <p class="amount">${{ movimiento.amount }}</p>
                     <p>{{ movimiento.date }}</p>
                     <p class="description">{{ movimiento.description }}</p>
@@ -16,43 +48,7 @@
             </div>
         </div>
 
-        <!-- <div class="form">
-                <div class="field">
-                    <label for="">Monto</label>
-                    <input type="number" v-model="transaction.amount">
-                </div>
-                <br>
-                <div class="checkboxs">
-                    <button :class="transaction.type == 'ingreso' ? 'selected ingreso' : ''" @click="transaction.type = 'ingreso'">Ingreso</button>
-                    <button :class="transaction.type == 'egreso' ? 'selected egreso' : ''" @click="transaction.type = 'egreso'">Egreso</button>
-                </div>
-                <br>
-                <div class="field">
-                    <label for="">Fecha</label>
-                    <input type="date" v-model="transaction.date">
-                </div>
-                <br>
-                <div class="field">
-                    <label for="">Categoria</label>
-                    <select name="" id="" v-model="transaction.category_id">
-                        <option value="1">Sueldo</option>
-                        <option value="2">Comida</option>
-                        <option value="3">Negocio</option>
-                        <option value="4">Recreacion</option>
-                        <option value="5">Cita</option>
-                        <option value="6">Otro</option>
-                    </select>
-                </div>
-                <br>
-                <div class="field">
-                    <label for="">Descripcion</label>
-                    <input type="text" v-model="transaction.description">
-                </div>
-                <br>
-                <button @click="saveTransaction()">Guardar</button>
-        </div>
         
-        <br> -->
     </div>
 </template>
 
@@ -62,8 +58,8 @@ import axios from 'axios';
     export default {
         data() {
             return {
-                gastos: 0,
-                ahorro: 0,
+                cargos_total: 0,
+                abonos_total: 0,
                 saldo: 0,
                 movimientos: [],
                 transaction: {
@@ -84,14 +80,14 @@ import axios from 'axios';
                 if(response.data.status === 'success'){
                     this.movimientos = response.data.transactions;
 
-                    this.ahorro = 0;
-                    this.gastos = 0;
+                    this.cargos_total = 0;
+                    this.abonos_total = 0;
 
                     this.movimientos.forEach(movimiento => {
-                        if(movimiento.type === 'ingreso'){
-                            this.ahorro += parseFloat(movimiento.amount);
+                        if(movimiento.type === 'cargo'){
+                            this.cargos_total += parseFloat(movimiento.amount);
                         }else{
-                            this.gastos += parseFloat(movimiento.amount);
+                            this.abonos_total += parseFloat(movimiento.amount);
                         }
                     });
 

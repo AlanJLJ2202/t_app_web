@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <button @click="logout()">Cerrar sesion</button>
         <div class="card">
             <div class="row">

@@ -16,7 +16,6 @@ use App\Http\Controllers\TransactionsController;
 |
 */
 
-
 Route::match(['GET','POST'],'/', [AccesoController::class, 'login'])->name('login');
 //logout
 Route::get('/logout', [AccesoController::class, 'logout'])->name('logout');

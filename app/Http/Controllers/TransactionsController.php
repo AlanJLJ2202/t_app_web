@@ -59,7 +59,7 @@ class TransactionsController extends Controller
             DB::beginTransaction();
 
             // Get user authenticated
-            $user = User::find(1);
+            $user = Auth::user();
             // Create transaction
             $transaction = new Transaction();
             $transaction->user_id = $user->id;
@@ -69,12 +69,16 @@ class TransactionsController extends Controller
             $transaction->date = $request->date;
             $transaction->description = $request->description;
             $transaction->save();
+
+
             //Create new balance
             $balance = new Balance();
             $balance->user_id = $user->id;
-            $balance->amount = $request->type == 'ingreso' ? 
+            $balance->amount = $request->type == 'abono' ? 
                                $user->balance + $request->amount : 
                                $user->balance - $request->amount;
+
+
             $balance->save();
             // Update user balance
             $user->balance = $balance->amount;
