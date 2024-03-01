@@ -2,11 +2,22 @@
     <div class="content">
         <button @click="logout()">Cerrar sesion</button>
         <div class="card">
+
             <div class="row">
                 <p>${{ ahorro - gastos }}</p>
                 <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard-500x281.png"/>
             </div>
-            <h2>$ {{ gastos }}</h2>
+
+            <div class="balances">
+                <div>
+                    <label for="">Total ahorrado</label>
+                    <p style="color: white;">$ {{ ahorro }}</p>
+                </div>
+                <div>
+                    <label for="">Total retirado</label>
+                    <p style="color: white;">$ {{ gastos }}</p>
+                </div>               
+            </div>
 
             <div class="footer">
                 <p>123***************789</p>
@@ -117,15 +128,49 @@ import axios from 'axios';
                 }
             },
             saveTransaction: async function() {
-                const response = await axios.post('/api/transactions', this.transaction);
+                try {
 
-                //console.log('Transaction');
-                //console.log(this.transaction);
+                    if(this.transaction.amount === null || this.transaction.amount === ''){
+                        alert('Ingresa un monto');
+                        return;
+                    }
+                    if(this.transaction.type === ''){
+                        alert('Selecciona un tipo de movimiento');
+                        return;
+                    }
+                    if(this.transaction.date === null || this.transaction.date === ''){
+                        alert('Ingresa una fecha');
+                        return;
+                    }
+                    if(this.transaction.category_id === null || this.transaction.category_id === ''){
+                        alert('Selecciona una categoria');
+                        return;
+                    }
+                    if(this.transaction.description === null || this.transaction.description === ''){
+                        alert('Ingresa una descripcion');
+                        return;
+                    }
 
-                if(response.data.status === 'success'){
-                    this.fetchMovimientos();
-                }else{
+                    const response = await axios.post('/api/transactions', this.transaction);
+
+                    if(response.data.status === 'success'){
+                        this.transaction = {
+                                amount: null,
+                                date: '',
+                                type: '',
+                                category_id: '',
+                                description: ''
+                            }
+                        this.fetchMovimientos();
+                    }else{
+                        alert('Error al guardar el movimiento');
+                    }
+                    
+                } catch (e) {
+
                     alert('Error al guardar el movimiento');
+
+                    
                 }
             },
             logout: function() {

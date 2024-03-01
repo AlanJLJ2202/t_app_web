@@ -2,8 +2,33 @@
     <div> 
         <div class="header">
             <button @click="logout()">Cerrar sesion</button>
-            <p class="subtitle">Saldo restante</p>
-            <p>$ {{ cargos_total - abonos_total }}</p>
+            <div v-if="cargos_total >= abonos_total">
+                <p class="subtitle">Saldo restante</p>
+                <center>
+                    <p>$ {{ cargos_total - abonos_total }}</p>
+                </center>
+            </div>
+            <div v-else>
+                <p class="subtitle">
+                    Saldo a favor
+                </p>
+                <center>
+                    <p>$ {{ abonos_total - cargos_total }}</p>
+                </center>
+            </div>
+            <div class="subtitles">
+                <div>
+                    <label for="">Total gastado</label>
+                    <p>$ {{ cargos_total }}</p>
+                </div>
+                <div style="width: 30px;">
+
+                </div>
+                <div>
+                    <label for="">Total abonado</label>
+                    <p>$ {{ abonos_total }}</p>
+                </div>
+            </div>
         </div>
         <div class="content">
             <div class="form">
@@ -66,7 +91,7 @@ import axios from 'axios';
                     amount: null,
                     date: '',
                     type: '',
-                    category_id: 'Sueldo',
+                    category_id: '',
                     description: ''
                 }
             }
@@ -96,14 +121,47 @@ import axios from 'axios';
                 }
             },
             saveTransaction: async function() {
-                const response = await axios.post('/api/transactions', this.transaction);
 
-                //console.log('Transaction');
-                //console.log(this.transaction);
+                try {
+                    if(this.transaction.amount === null || this.transaction.amount === ''){
+                        alert('Ingresa un monto');
+                        return;
+                    }
+                    if(this.transaction.type === ''){
+                        alert('Selecciona un tipo de movimiento');
+                        return;
+                    }
+                    if(this.transaction.date === null || this.transaction.date === ''){
+                        alert('Ingresa una fecha');
+                        return;
+                    }
+                    if(this.transaction.category_id === null || this.transaction.category_id === ''){
+                        alert('Selecciona una categoria');
+                        return;
+                    }
+                    if(this.transaction.description === null || this.transaction.description === ''){
+                        alert('Ingresa una descripcion');
+                        return;
+                    }
 
-                if(response.data.status === 'success'){
-                    this.fetchMovimientos();
-                }else{
+                    const response = await axios.post('/api/transactions', this.transaction);
+
+                    if(response.data.status === 'success'){
+                        this.transaction = {
+                            amount: null,
+                            date: '',
+                            type: '',
+                            category_id: '',
+                            description: ''
+                        }
+                        this.fetchMovimientos();
+
+
+                    }else{
+                        alert('Error al guardar el movimiento');
+                    }
+
+                } catch (e) {
                     alert('Error al guardar el movimiento');
                 }
             },
