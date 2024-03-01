@@ -61,38 +61,70 @@ class TransactionsController extends Controller
             // Get user authenticated
             $user = Auth::user();
             // Create transaction
-            $transaction = new Transaction();
-            $transaction->user_id = $user->id;
-            $transaction->category_id = $request->category_id;
-            $transaction->type = $request->type;
-            $transaction->amount = $request->amount;
-            $transaction->date = $request->date;
-            $transaction->description = $request->description;
-            $transaction->save();
+
+            if($request->id != null && $request->id > 0){
+                $transaction = Transaction::find($request->id);
+                $transaction->category_id = $request->category_id;
+                $transaction->type = $request->type;
+                $transaction->amount = $request->amount;
+                $transaction->date = $request->date;
+                $transaction->description = $request->description;
+                $transaction->save();
+
+                $balance = Balance::where('user_id', $user->id)->first();
+                $balance->amount = $request->type == 'abono' ? 
+                                   $user->balance + $request->amount : 
+                                   $user->balance - $request->amount;
+                $balance->save();
+                // Update user balance
+                $user->balance = $balance->amount;
+                $user->save();
+
+                DB::commit();
+
+                $data = [
+                    'status' => 'success',
+                    'transaction' => $transaction,
+                    'balance' => $balance
+                ];
+
+                return response()->json($data, 201);
+            }else{
+                $transaction = new Transaction();
+                $transaction->user_id = $user->id;
+                $transaction->category_id = $request->category_id;
+                $transaction->type = $request->type;
+                $transaction->amount = $request->amount;
+                $transaction->date = $request->date;
+                $transaction->description = $request->description;
+                $transaction->save();
 
 
-            //Create new balance
-            $balance = new Balance();
-            $balance->user_id = $user->id;
-            $balance->amount = $request->type == 'abono' ? 
-                               $user->balance + $request->amount : 
-                               $user->balance - $request->amount;
+                //Create new balance
+                $balance = new Balance();
+                $balance->user_id = $user->id;
+                $balance->amount = $request->type == 'abono' ? 
+                                $user->balance + $request->amount : 
+                                $user->balance - $request->amount;
 
 
-            $balance->save();
-            // Update user balance
-            $user->balance = $balance->amount;
-            $user->save();
+                $balance->save();
+                // Update user balance
+                $user->balance = $balance->amount;
+                $user->save();
 
-            DB::commit();
+                DB::commit();
 
-            $data = [
-                'status' => 'success',
-                'transaction' => $transaction,
-                'balance' => $balance
-            ];
+                $data = [
+                    'status' => 'success',
+                    'transaction' => $transaction,
+                    'balance' => $balance
+                ];
 
-            return response()->json($data, 201);
+             return response()->json($data, 201);
+            }
+
+            
         } catch (\Exception $e) {
             DB::rollback();
 

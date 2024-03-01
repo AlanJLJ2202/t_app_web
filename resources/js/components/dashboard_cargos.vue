@@ -48,9 +48,10 @@
                 <div class="field">
                     <label for="">Categoria</label>
                     <select name="" id="" v-model="transaction.category_id">
+                        <option value="13">Negocio</option>
                         <option value="7">Prestamo</option>
                         <option value="8">Compu</option>
-                        <option value="9">Anillo</option>
+                        <!-- <option value="9">Anillo</option> -->
                         <option value="10">Frasco</option>
                         <option value="11">Coppel</option>
                         <option value="12">Otro</option>
@@ -65,7 +66,7 @@
         
         <br> 
             <h1>Movimientos</h1>
-            <div v-for="movimiento in movimientos" :class="movimiento.type == 'cargo' ? 'item egreso' : 'item ingreso' ">
+            <div v-for="movimiento in movimientos" :class="movimiento.type == 'cargo' ? 'item egreso' : 'item ingreso' " @click="selectTransaction(movimiento)">
                     <p class="amount">${{ movimiento.amount }}</p>
                     <p>{{ movimiento.date }}</p>
                     <p class="description">{{ movimiento.description }}</p>
@@ -120,6 +121,11 @@ import axios from 'axios';
                     alert('Error al cargar los movimientos');
                 }
             },
+
+            selectTransaction: function(movimiento) {
+                this.transaction = movimiento;
+            },
+
             saveTransaction: async function() {
 
                 try {
