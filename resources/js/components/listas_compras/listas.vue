@@ -15,6 +15,9 @@
             
         </nav>
 
+        <button @click="logout()">Cerrar sesioooon</button>
+        <br>
+
         <div class="row-lists">
             <button>Lista 1</button>
             <button>Lista 2</button>
@@ -24,12 +27,313 @@
         </div>
 
         <center>
-            <h2>Lista 1</h2>
+            <label>Lista 1</label>
         </center>
+
+
 
         <div class="body-content">
             <div class="body-block left">
+                <div class="products-list">
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 1</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 2</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 3</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 4</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="product-info">
+                                <p>Producto 5</p>
+                                <p>Descripcion</p>
+                                <p>Costo</p>
+                            </div>
+                            <div class="product-actions">
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </div>
+                        </div>
 
+                    </div>
             </div>
             <div class="body-block rigth">
 
@@ -95,8 +399,7 @@
             </div>
         </div> -->
 
-        <button @click="logout()">Cerrar sesioooon</button>
-        <br>
+        
     </div>
 </template>
 

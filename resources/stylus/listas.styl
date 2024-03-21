@@ -1,6 +1,11 @@
 body
     background-color #FFF5E5
 
+footer
+    background-color #F01815
+    height: 100px
+
+
 nav
     background-color #F01815
     padding 10px
@@ -79,8 +84,9 @@ nav
     //all viewports
     width: 100%
     //all viewports
-    height: 100vh
+    height: 75vh
     display: flex
+
     .body-block
         width 50%
         &.left
@@ -89,7 +95,7 @@ nav
             //all viewports
             width: 50%
             //all viewports
-            height: 100vh
+            height: 100%
             //display: flex
             align-items: center
             justify-content: center
@@ -97,13 +103,15 @@ nav
             box-shadow: 0 0 10px 0 black
             //rounded block
             border-radius: 10px
+            overflow-y: auto; /* Agrega scroll vertical cuando sea necesario */
+
         &.rigth
             background-color: green
             //padding: 10px
             //all viewports
             width: 50%
             //all viewports
-            height: 100vh
+            height: 20vh
             //display: flex
             align-items: flex-end
             justify-content: end    
@@ -111,9 +119,16 @@ nav
             box-shadow: 0 0 10px 0 black
             //rounded block
             border-radius: 10px
-            //margin: 10px
-            //margin-left: 10px
-            //margin-right: 10px
-            //margin-top: 10px
-            //margin-bottom: 10px
-            //margin:
+
+
+.products-list
+    display: flex
+    justify-content: space-evenly
+    background-color: blue
+    padding: 20px
+    flex-wrap: wrap; /* Esto permite que los elementos pasen a la siguiente línea */
+    flex-direction: row; 
+    .product
+        background-color: yellow
+        width: 30%
+        margin: 10px

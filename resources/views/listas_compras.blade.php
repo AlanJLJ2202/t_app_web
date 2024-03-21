@@ -13,5 +13,9 @@
     </div>
 </body>
 
+<footer>
+    
+</footer>
+
 <script src="{{ mix('js/listas_compras.js') }}"></script>
 </html>
