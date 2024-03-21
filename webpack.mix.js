@@ -8,6 +8,7 @@ mix.browserSync({
 mix.stylus('resources/stylus/global.styl', 'public/css').version().options({ processCssUrls: false });
 mix.stylus('resources/stylus/dashboard.styl', 'public/css').version().options({ processCssUrls: false });
 mix.stylus('resources/stylus/dashboard_cargos.styl', 'public/css').version().options({ processCssUrls: false });
+mix.stylus('resources/stylus/listas.styl', 'public/css').version().options({ processCssUrls: false });
 
 
 
@@ -23,6 +24,7 @@ mix.stylus('resources/stylus/dashboard_cargos.styl', 'public/css').version().opt
  */
 
 mix.js(['resources/js/transaccion.js'], 'public/js/transaccion.js').vue(2).version();
+mix.js(['resources/js/listas_compras.js'], 'public/js/listas_compras.js').vue(2).version();
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [

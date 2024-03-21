@@ -45,6 +45,13 @@ class AccesoController extends Controller
 							'estatus' => 200,
 							'msg' => 'Welcome to the system'
 						);
+
+						$user = Auth::user();
+
+						if($user->tipo == 'listas'){
+							return redirect()->route('listas_compras')->with('alert', $alert);
+						}
+
 						return redirect()->route('dashboard')->with('alert', $alert);
 					} else {
 						\Log::info('5');

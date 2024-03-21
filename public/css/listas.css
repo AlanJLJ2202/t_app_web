@@ -1,0 +1,87 @@
+body {
+  background-color: #fff5e5;
+}
+nav {
+  background-color: #f01815;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 #000;
+}
+nav img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 #000;
+}
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 10px;
+  width: 30%;
+  align-self: center;
+  justify-content: space-between;
+}
+.nav-center label {
+  width: 33%;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.row-lists button {
+  background-color: #f01815;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 10px;
+}
+.row-lists button:hover {
+  background-color: #008000;
+}
+.row-lists button:active {
+  background-color: #008000;
+}
+.row-lists button:focus {
+  background-color: #008000;
+}
+.row-lists button:disabled {
+  background-color: #008000;
+}
+.body-content {
+  background-color: #ffa500;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+.body-content .body-block {
+  width: 50%;
+}
+.body-content .body-block.left {
+  background-color: #f01815;
+  width: 50%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 10px;
+}
+.body-content .body-block.rigth {
+  background-color: #008000;
+  width: 50%;
+  height: 100vh;
+  align-items: flex-end;
+  justify-content: end;
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 10px;
+}
+

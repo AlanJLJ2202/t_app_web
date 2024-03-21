@@ -1,8 +1,10 @@
 {
-    "/js/transaccion.js": "/js/transaccion.js?id=56a49344ec2ab00b808c8d09672cf78b",
-    "/js/app.js": "/js/app.js?id=1492ecd9a1b712bf225be46d0cb007db",
-    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7d8ad5cb9c940",
-    "/css/dashboard_cargos.css": "/css/dashboard_cargos.css?id=a340adf1fa897c20f667e4ea9bac6810",
-    "/css/dashboard.css": "/css/dashboard.css?id=ecb5cc331e0831458e50c4fde70de290",
-    "/css/global.css": "/css/global.css?id=aa64b8d993506ed9a10c28c8db5c6c45"
+    "/js/transaccion.js": "/js/transaccion.js?id=575d11bf72973dca4ab0607deb476a7e",
+    "/js/listas_compras.js": "/js/listas_compras.js?id=034f0fd044d3ae5cc1b720252db2bad2",
+    "/js/app.js": "/js/app.js?id=e1f1eeb4b0e219124a1442cf0cb6edda",
+    "/css/listas.css": "/css/listas.css?id=43a935d9ce4abbd8cc9120609239d1c7",
+    "/css/dashboard_cargos.css": "/css/dashboard_cargos.css?id=fec0fc3223dde1ba547d107842cf70ab",
+    "/css/dashboard.css": "/css/dashboard.css?id=973e5dc04a44531125c288106d99fa3d",
+    "/css/global.css": "/css/global.css?id=cefc4ea3e9b4ac92dc61f7d38e24b393",
+    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7d8ad5cb9c940"
 }

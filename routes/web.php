@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccesoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\ListasComprasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [TransactionsController::class, 'view_dashboard'])->name('dashboard');
     Route::get('/api/transactions', [TransactionsController::class, 'get_transactions']);
     Route::post('/api/transactions', [TransactionsController::class, 'register_transaction']);
+
+    Route::get('/listas_compras', [ListasComprasController::class, 'view_listas'])->name('listas_compras');
 });
 
