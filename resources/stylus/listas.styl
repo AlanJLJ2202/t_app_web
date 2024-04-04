@@ -134,15 +134,12 @@ nav
     .product-item
         background-color: red
         height: 100%
+        margin-bottom: 20px
 
     .product-top
-        background-color: yellow
-        //width: 30%
-        //margin: 10px
         display: flex
         align-items: center
         .product-info
-            background-color: orange
             justify-content: center
             display: flex
             align-items: center
@@ -151,8 +148,19 @@ nav
             align-items: center
             //padding: 10px
             height: 150px
+        .product-actions
+            display: block
+            flex-direction: row
+            justify-content: center
+            align-items: center
+            label
+                font-size: 25px
+            button
+                width: 50px
+                height: 50px
+                font-size: 40px
+                color: white
     .product-bottom
-        background-color: cyan
         height: 100%
         display: flex
         justify-content: center
@@ -160,3 +168,37 @@ nav
         label
             font-size: 20px
         //width: 30%            
+
+
+.botones
+    background-color: orange
+    display: flex
+    justify-content: center
+
+.listado-inventario        
+    background-color: cyan
+    justify-content: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    height: 75vh
+    overflow-y: auto; /* Agrega scroll vertical cuando sea necesario */
+
+    .producto-inventario
+        background-color: purple
+        width: 20vw
+        margin-bottom: 20px
+        padding: 10px
+        display: flex
+        img
+            height: 100px
+            width: 100px
+        label
+            color: white    
+            margin: 10px
+            font-size: 25px
+        .left
+            margin-right: 20px    
+        .right
+            display: flex
+            flex-direction: column

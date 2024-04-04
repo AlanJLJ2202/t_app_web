@@ -100,14 +100,13 @@ nav img {
 .products-list .product-item {
   background-color: #f00;
   height: 100%;
+  margin-bottom: 20px;
 }
 .products-list .product-top {
-  background-color: #ff0;
   display: flex;
   align-items: center;
 }
 .products-list .product-top .product-info {
-  background-color: #ffa500;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -117,8 +116,22 @@ nav img {
   align-items: center;
   height: 150px;
 }
+.products-list .product-top .product-actions {
+  display: block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.products-list .product-top .product-actions label {
+  font-size: 25px;
+}
+.products-list .product-top .product-actions button {
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  color: #fff;
+}
 .products-list .product-bottom {
-  background-color: #0ff;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -126,5 +139,42 @@ nav img {
 }
 .products-list .product-bottom label {
   font-size: 20px;
+}
+.botones {
+  background-color: #ffa500;
+  display: flex;
+  justify-content: center;
+}
+.listado-inventario {
+  background-color: #0ff;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 75vh;
+  overflow-y: auto; /* Agrega scroll vertical cuando sea necesario */
+}
+.listado-inventario .producto-inventario {
+  background-color: #800080;
+  width: 20vw;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+}
+.listado-inventario .producto-inventario img {
+  height: 100px;
+  width: 100px;
+}
+.listado-inventario .producto-inventario label {
+  color: #fff;
+  margin: 10px;
+  font-size: 25px;
+}
+.listado-inventario .producto-inventario .left {
+  margin-right: 20px;
+}
+.listado-inventario .producto-inventario .right {
+  display: flex;
+  flex-direction: column;
 }
 

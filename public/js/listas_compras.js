@@ -2086,7 +2086,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         category_id: 'Sueldo',
         description: ''
       },
-      user: null
+      user: null,
+      panel: 'productos',
+      modo: 'visor'
     };
   },
   mounted: function mounted() {
@@ -2241,14 +2243,29 @@ var render = function render() {
   }, [_c("label", {
     attrs: {
       "for": ""
+    },
+    on: {
+      click: function click($event) {
+        _vm.panel = "listas";
+      }
     }
   }, [_vm._v("Listas")]), _vm._v(" "), _c("label", {
     attrs: {
       "for": ""
+    },
+    on: {
+      click: function click($event) {
+        _vm.panel = "productos";
+      }
     }
   }, [_vm._v("Productos")]), _vm._v(" "), _c("label", {
     attrs: {
       "for": ""
+    },
+    on: {
+      click: function click($event) {
+        _vm.panel = "categorias";
+      }
     }
   }, [_vm._v("Categorias")])])])], 1), _vm._v(" "), _c("button", {
     on: {
@@ -2256,7 +2273,7 @@ var render = function render() {
         return _vm.logout();
       }
     }
-  }, [_vm._v("Cerrar sesión")]), _vm._v(" "), _c("br"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("center", [_c("label", [_vm._v("Lista 1")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Cerrar sesión")]), _vm._v(" "), _c("br"), _vm._v(" "), _vm.panel == "listas" ? _c("div", [_vm._m(0), _vm._v(" "), _c("center", [_c("label", [_vm._v("Lista 1")])]), _vm._v(" "), _c("div", {
     staticClass: "body-content"
   }, [_c("div", {
     staticClass: "body-block left"
@@ -2273,9 +2290,33 @@ var render = function render() {
       src: "/images/logo_gallos.png",
       alt: ""
     }
-  })]), _vm._v(" "), _vm._m(1)], 1)]), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "product-actions"
+  }, [_c("center", [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v(_vm._s(1))]), _vm._v(" "), _c("br"), _vm._v(" "), _c("br"), _vm._v(" "), _c("button", {
+    staticStyle: {
+      "background-color": "green"
+    }
+  }, [_vm._v("+")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("button", {
+    staticStyle: {
+      "background-color": "red"
+    }
+  }, [_vm._v("-")])])], 1)], 1)]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _c("div", {
     staticClass: "body-block rigth"
-  })])], 1);
+  })])], 1) : _vm._e(), _vm._v(" "), _vm.panel == "productos" ? _c("div", [_c("div", {
+    staticClass: "botones"
+  }, [_c("button", {
+    on: {
+      click: function click($event) {
+        _vm.modo = "edicion";
+      }
+    }
+  }, [_vm._v("Agregar producto")])]), _vm._v(" "), _c("div", {
+    staticClass: "listado-inventario"
+  }, [_vm.modo == "visor" ? _c("div", [_vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]) : _vm._e(), _vm._v(" "), _vm.modo == "edicion" ? _c("div", [_vm._m(10)]) : _vm._e()])]) : _vm._e()]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2283,12 +2324,6 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "row-lists"
   }, [_c("button", [_vm._v("Lista 1")]), _vm._v(" "), _c("button", [_vm._v("Lista 2")]), _vm._v(" "), _c("button", [_vm._v("Lista 3")]), _vm._v(" "), _c("button", [_vm._v("Lista 4")]), _vm._v(" "), _c("button", [_vm._v("+")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -2307,6 +2342,132 @@ var staticRenderFns = [function () {
       "for": ""
     }
   }, [_vm._v("20$")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "producto-inventario"
+  }, [_c("div", {
+    staticClass: "left"
+  }, [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "right"
+  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+    attrs: {
+      type: "text"
+    }
+  })]);
 }];
 render._withStripped = true;
 
