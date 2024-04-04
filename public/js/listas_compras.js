@@ -2256,7 +2256,26 @@ var render = function render() {
         return _vm.logout();
       }
     }
-  }, [_vm._v("Cerrar sesioooon")]), _vm._v(" "), _c("br"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("center", [_c("label", [_vm._v("Lista 1")])]), _vm._v(" "), _vm._m(1)], 1);
+  }, [_vm._v("Cerrar sesión")]), _vm._v(" "), _c("br"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("center", [_c("label", [_vm._v("Lista 1")])]), _vm._v(" "), _c("div", {
+    staticClass: "body-content"
+  }, [_c("div", {
+    staticClass: "body-block left"
+  }, [_c("div", {
+    staticClass: "products-list"
+  }, [_c("div", {
+    staticClass: "product-item"
+  }, [_c("div", {
+    staticClass: "product-top"
+  }, [_c("div", {
+    staticClass: "product-info"
+  }, [_c("center", [_c("img", {
+    attrs: {
+      src: "/images/logo_gallos.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _vm._m(1)], 1)]), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), _c("div", {
+    staticClass: "body-block rigth"
+  })])], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2268,176 +2287,26 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "body-content"
-  }, [_c("div", {
-    staticClass: "body-block left"
-  }, [_c("div", {
-    staticClass: "products-list"
-  }, [_c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 1")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
     staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 2")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 3")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 4")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])]), _vm._v(" "), _c("div", {
-    staticClass: "product"
-  }, [_c("div", {
-    staticClass: "product-info"
-  }, [_c("p", [_vm._v("Producto 5")]), _vm._v(" "), _c("p", [_vm._v("Descripcion")]), _vm._v(" "), _c("p", [_vm._v("Costo")])]), _vm._v(" "), _c("div", {
-    staticClass: "product-actions"
-  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "body-block rigth"
-  })]);
+  }, [_c("button", [_vm._v("Editar")]), _vm._v(" "), _c("button", [_vm._v("Eliminar")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "product-bottom"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Cheesecake")]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      width: "10px"
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("20$")])]);
 }];
 render._withStripped = true;
 

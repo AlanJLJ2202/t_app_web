@@ -121,6 +121,8 @@ nav
             border-radius: 10px
 
 
+
+
 .products-list
     display: flex
     justify-content: space-evenly
@@ -128,7 +130,33 @@ nav
     padding: 20px
     flex-wrap: wrap; /* Esto permite que los elementos pasen a la siguiente línea */
     flex-direction: row; 
-    .product
+
+    .product-item
+        background-color: red
+        height: 100%
+
+    .product-top
         background-color: yellow
-        width: 30%
-        margin: 10px
+        //width: 30%
+        //margin: 10px
+        display: flex
+        align-items: center
+        .product-info
+            background-color: orange
+            justify-content: center
+            display: flex
+            align-items: center
+            height: 100%
+        img
+            align-items: center
+            //padding: 10px
+            height: 150px
+    .product-bottom
+        background-color: cyan
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        label
+            font-size: 20px
+        //width: 30%            

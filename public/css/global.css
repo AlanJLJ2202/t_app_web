@@ -22,7 +22,7 @@ h1 {
 }
 .login-contenido .informacion h1 {
   text-align: center;
-  color: #008000;
+  color: #f01815;
   margin-bottom: 20px;
 }
 .login-contenido .informacion .field {
@@ -31,20 +31,20 @@ h1 {
 .login-contenido .informacion .field label {
   display: block;
   margin-bottom: 5px;
-  color: #008000;
+  color: #f01815;
 }
 .login-contenido .informacion .field input {
   display: block;
   width: 100%;
   padding: 5px;
-  border: 1px solid #008000;
+  border: 1px solid #f01815;
   border-radius: 5px;
   background-color: #000;
   color: #fff;
 }
 .login-contenido .informacion .field input:focus {
   outline: none;
-  border-color: #09dc09;
+  border-color: #f01815;
 }
 .login-contenido .informacion .boton {
   padding: 15px 0;
@@ -53,21 +53,21 @@ h1 {
 }
 .login-contenido .informacion .boton button {
   padding: 10px 20px;
-  border: 1px solid #008000;
+  border: 1px solid #f01815;
   border-radius: 5px;
   background-color: #000;
-  color: #008000;
+  color: #f01815;
 }
 .login-contenido .informacion .boton button:focus {
   outline: none;
-  border-color: #008000;
+  border-color: #f01815;
 }
 .login-contenido .informacion .boton button:hover {
-  background-color: #008000;
+  background-color: #f01815;
   color: #000;
 }
 .login-contenido .informacion .boton button:active {
-  background-color: #008000;
+  background-color: #f01815;
   color: #000;
 }
 .login-contenido .informacion .boton button:disabled {

@@ -15,7 +15,7 @@
             
         </nav>
 
-        <button @click="logout()">Cerrar sesioooon</button>
+        <button @click="logout()">Cerrar sesión</button>
         <br>
 
         <div class="row-lists">
@@ -33,20 +33,35 @@
 
 
         <div class="body-content">
+
             <div class="body-block left">
                 <div class="products-list">
-                        <div class="product">
-                            <div class="product-info">
-                                <p>Producto 1</p>
-                                <p>Descripcion</p>
-                                <p>Costo</p>
+
+                        <div class="product-item">
+                            
+                            <div class="product-top">
+
+                                <div class="product-info">
+                                    <center>
+                                        <img src="/images/logo_gallos.png" alt="">
+                                    </center>
+                                    <div class="product-actions">
+                                        <button>Editar</button>
+                                        <button>Eliminar</button>
+                                    </div>  
+                                </div>
+
                             </div>
-                            <div class="product-actions">
-                                <button>Editar</button>
-                                <button>Eliminar</button>
+                            
+                            <div class="product-bottom">
+                                <label for="">Cheesecake</label>
+                                <div style="width: 10px;"></div>
+                                <label for="">20$</label>
                             </div>
                         </div>
-                        <div class="product">
+                        
+
+                        <!-- <div class="product">
                             <div class="product-info">
                                 <p>Producto 2</p>
                                 <p>Descripcion</p>
@@ -331,9 +346,9 @@
                                 <button>Editar</button>
                                 <button>Eliminar</button>
                             </div>
-                        </div>
+                        </div> -->
 
-                    </div>
+                </div>
             </div>
             <div class="body-block rigth">
 

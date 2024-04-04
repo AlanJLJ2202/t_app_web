@@ -97,9 +97,34 @@ nav img {
   flex-wrap: wrap; /* Esto permite que los elementos pasen a la siguiente línea */
   flex-direction: row;
 }
-.products-list .product {
+.products-list .product-item {
+  background-color: #f00;
+  height: 100%;
+}
+.products-list .product-top {
   background-color: #ff0;
-  width: 30%;
-  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+.products-list .product-top .product-info {
+  background-color: #ffa500;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.products-list .product-top img {
+  align-items: center;
+  height: 150px;
+}
+.products-list .product-bottom {
+  background-color: #0ff;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.products-list .product-bottom label {
+  font-size: 20px;
 }
 
