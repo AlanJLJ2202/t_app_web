@@ -2072,6 +2072,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['vuser'],
   data: function data() {
@@ -2088,25 +2089,176 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       user: null,
       panel: 'productos',
-      modo: 'visor'
+      modo: 'visor',
+      categorias: [],
+      productos: [],
+      producto: {
+        id: null,
+        nombre: '',
+        cantidad: '',
+        unidad: '',
+        precio_unidad: '',
+        categoria_id: null
+      }
     };
   },
   mounted: function mounted() {
     this.user = this.vuser;
-    this.fetchMovimientos();
+    //this.fetchMovimientos();
+    this.getCategorias();
+    this.getProductos();
   },
   methods: {
-    fetchMovimientos: function () {
-      var _fetchMovimientos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _this = this;
+    getCategorias: function () {
+      var _getCategorias = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/transactions');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/categorias');
             case 2:
               response = _context.sent;
+              if (response.data.status === 'success') {
+                this.categorias = response.data.categorias;
+              } else {
+                alert('Error al cargar las categorias');
+              }
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this);
+      }));
+      function getCategorias() {
+        return _getCategorias.apply(this, arguments);
+      }
+      return getCategorias;
+    }(),
+    getProductos: function () {
+      var _getProductos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/productos');
+            case 2:
+              response = _context2.sent;
+              if (response.data.status === 'success') {
+                this.productos = response.data.productos;
+              } else {
+                alert('Error al cargar los productos');
+              }
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function getProductos() {
+        return _getProductos.apply(this, arguments);
+      }
+      return getProductos;
+    }(),
+    saveProducto: function () {
+      var _saveProducto = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var response, _response;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              if (!(this.producto.nombre === null || this.producto.nombre === '')) {
+                _context3.next = 4;
+                break;
+              }
+              alert('Ingresa un nombre');
+              return _context3.abrupt("return");
+            case 4:
+              if (!(this.producto.precio_unidad === null || this.producto.precio_unidad === '')) {
+                _context3.next = 7;
+                break;
+              }
+              alert('Ingresa un precio');
+              return _context3.abrupt("return");
+            case 7:
+              if (!(this.producto.categoria_id === null || this.producto.categoria_id === '')) {
+                _context3.next = 10;
+                break;
+              }
+              alert('Selecciona una categoria');
+              return _context3.abrupt("return");
+            case 10:
+              if (!(this.producto.id === null)) {
+                _context3.next = 17;
+                break;
+              }
+              _context3.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/productos', this.producto);
+            case 13:
+              response = _context3.sent;
+              if (response.data.status === 'success') {
+                this.producto = {
+                  nombre: '',
+                  precio_unidad: 0,
+                  categoria_id: null
+                };
+                this.getProductos();
+                this.modo = 'visor';
+              } else {
+                alert('Error al guardar el producto');
+              }
+              _context3.next = 21;
+              break;
+            case 17:
+              _context3.next = 19;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/productos/' + this.producto.id, this.producto);
+            case 19:
+              _response = _context3.sent;
+              if (_response.data.status === 'success') {
+                this.producto = {
+                  nombre: '',
+                  precio_unidad: 0,
+                  categoria_id: null
+                };
+                this.getProductos();
+                this.modo = 'visor';
+              } else {
+                alert('Error al guardar el producto');
+              }
+            case 21:
+              _context3.next = 26;
+              break;
+            case 23:
+              _context3.prev = 23;
+              _context3.t0 = _context3["catch"](0);
+              alert('Error al guardar el producto');
+            case 26:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this, [[0, 23]]);
+      }));
+      function saveProducto() {
+        return _saveProducto.apply(this, arguments);
+      }
+      return saveProducto;
+    }(),
+    setProducto: function setProducto(producto) {
+      this.producto = producto;
+      this.modo = 'edicion';
+    },
+    fetchMovimientos: function () {
+      var _fetchMovimientos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        var _this = this;
+        var response;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/transactions');
+            case 2:
+              response = _context4.sent;
               if (response.data.status === 'success') {
                 this.movimientos = response.data.transactions;
                 this.ahorro = 0;
@@ -2123,9 +2275,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
             case 4:
             case "end":
-              return _context.stop();
+              return _context4.stop();
           }
-        }, _callee, this);
+        }, _callee4, this);
       }));
       function fetchMovimientos() {
         return _fetchMovimientos.apply(this, arguments);
@@ -2133,51 +2285,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchMovimientos;
     }(),
     saveTransaction: function () {
-      var _saveTransaction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var _saveTransaction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var response;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              _context2.prev = 0;
+              _context5.prev = 0;
               if (!(this.transaction.amount === null || this.transaction.amount === '')) {
-                _context2.next = 4;
+                _context5.next = 4;
                 break;
               }
               alert('Ingresa un monto');
-              return _context2.abrupt("return");
+              return _context5.abrupt("return");
             case 4:
               if (!(this.transaction.type === '')) {
-                _context2.next = 7;
+                _context5.next = 7;
                 break;
               }
               alert('Selecciona un tipo de movimiento');
-              return _context2.abrupt("return");
+              return _context5.abrupt("return");
             case 7:
               if (!(this.transaction.date === null || this.transaction.date === '')) {
-                _context2.next = 10;
+                _context5.next = 10;
                 break;
               }
               alert('Ingresa una fecha');
-              return _context2.abrupt("return");
+              return _context5.abrupt("return");
             case 10:
               if (!(this.transaction.category_id === null || this.transaction.category_id === '')) {
-                _context2.next = 13;
+                _context5.next = 13;
                 break;
               }
               alert('Selecciona una categoria');
-              return _context2.abrupt("return");
+              return _context5.abrupt("return");
             case 13:
               if (!(this.transaction.description === null || this.transaction.description === '')) {
-                _context2.next = 16;
+                _context5.next = 16;
                 break;
               }
               alert('Ingresa una descripcion');
-              return _context2.abrupt("return");
+              return _context5.abrupt("return");
             case 16:
-              _context2.next = 18;
+              _context5.next = 18;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/transactions', this.transaction);
             case 18:
-              response = _context2.sent;
+              response = _context5.sent;
               if (response.data.status === 'success') {
                 this.transaction = {
                   amount: null,
@@ -2190,17 +2342,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               } else {
                 alert('Error al guardar el movimiento');
               }
-              _context2.next = 25;
+              _context5.next = 25;
               break;
             case 22:
-              _context2.prev = 22;
-              _context2.t0 = _context2["catch"](0);
+              _context5.prev = 22;
+              _context5.t0 = _context5["catch"](0);
               alert('Error al guardar el movimiento');
             case 25:
             case "end":
-              return _context2.stop();
+              return _context5.stop();
           }
-        }, _callee2, this, [[0, 22]]);
+        }, _callee5, this, [[0, 22]]);
       }));
       function saveTransaction() {
         return _saveTransaction.apply(this, arguments);
@@ -2316,7 +2468,146 @@ var render = function render() {
     }
   }, [_vm._v("Agregar producto")])]), _vm._v(" "), _c("div", {
     staticClass: "listado-inventario"
-  }, [_vm.modo == "visor" ? _c("div", [_vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]) : _vm._e(), _vm._v(" "), _vm.modo == "edicion" ? _c("div", [_vm._m(10)]) : _vm._e()])]) : _vm._e()]);
+  }, [_vm.modo == "visor" ? _c("div", _vm._l(_vm.productos, function (producto) {
+    return _c("div", {
+      staticClass: "producto-inventario",
+      on: {
+        click: function click($event) {
+          return _vm.setProducto(producto);
+        }
+      }
+    }, [_vm._m(2, true), _vm._v(" "), _c("div", {
+      staticClass: "right"
+    }, [_c("label", [_c("strong", [_vm._v(_vm._s(producto.nombre) + " " + _vm._s(" " + producto.cantidad) + " " + _vm._s(producto.unidad))])]), _vm._v(" "), _c("label", [_vm._v("$" + _vm._s(producto.precio_unidad))])])]);
+  }), 0) : _vm._e(), _vm._v(" "), _vm.modo == "edicion" ? _c("div", [_c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.producto.nombre,
+      expression: "producto.nombre"
+    }],
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.producto.nombre
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.producto, "nombre", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Cantidad")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.producto.cantidad,
+      expression: "producto.cantidad"
+    }],
+    attrs: {
+      type: "number"
+    },
+    domProps: {
+      value: _vm.producto.cantidad
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.producto, "cantidad", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Unidad")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.producto.unidad,
+      expression: "producto.unidad"
+    }],
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.producto.unidad
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.producto, "unidad", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Costo")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.producto.precio_unidad,
+      expression: "producto.precio_unidad"
+    }],
+    attrs: {
+      type: "number"
+    },
+    domProps: {
+      value: _vm.producto.precio_unidad
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.producto, "precio_unidad", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Categoria")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.producto.categoria_id,
+      expression: "producto.categoria_id"
+    }],
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.producto, "categoria_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, _vm._l(_vm.categorias, function (categoria) {
+    return _c("option", {
+      domProps: {
+        value: categoria.id
+      }
+    }, [_vm._v(_vm._s(categoria.nombre))]);
+  }), 0), _vm._v(" "), _c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.saveProducto();
+      }
+    }
+  }, [_vm._v("Guardar")])])]) : _vm._e()])]) : _vm._e()]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2346,126 +2637,10 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
     staticClass: "left"
   }, [_c("img", {
     attrs: {
       src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "producto-inventario"
-  }, [_c("div", {
-    staticClass: "left"
-  }, [_c("img", {
-    attrs: {
-      src: "/images/logo_gallos.png"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "right"
-  }, [_c("label", [_c("strong", [_vm._v("Producto 1")])]), _vm._v(" "), _c("label", [_vm._v("$45")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "field"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "text"
     }
   })]);
 }];

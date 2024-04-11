@@ -80,83 +80,13 @@
             <div class="listado-inventario">
                 
                 <div v-if="modo == 'visor'">
-                    <div class="producto-inventario">
+                    <div class="producto-inventario" v-for="producto in productos" @click="setProducto(producto)">
                         <div class="left">
                             <img src="/images/logo_gallos.png">
                         </div>
                         <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
-                        </div>
-                    </div>
-
-                    <div class="producto-inventario">
-                        <div class="left">
-                            <img src="/images/logo_gallos.png">
-                        </div>
-                        <div class="right">
-                            <label><strong>Producto 1</strong></label>
-                            <label>$45</label>
+                            <label><strong>{{ producto.nombre }} {{ ' '+producto.cantidad }} {{ producto.unidad }}</strong></label>
+                            <label>${{ producto.precio_unidad }}</label>
                         </div>
                     </div>
                 </div>
@@ -165,7 +95,18 @@
 
                     <div class="field">
                         <label for="">Nombre</label>
-                        <input type="text">
+                        <input type="text" v-model="producto.nombre">
+                        <label for="">Cantidad</label>
+                        <input type="number" v-model="producto.cantidad">
+                        <label for="">Unidad</label>
+                        <input type="text" v-model="producto.unidad">
+                        <label for="">Costo</label>
+                        <input type="number" v-model="producto.precio_unidad">
+                        <label for="">Categoria</label>
+                        <select v-model="producto.categoria_id">
+                            <option :value="categoria.id" v-for="categoria in categorias">{{ categoria.nombre }}</option>
+                        </select>
+                        <button @click="saveProducto()">Guardar</button>
                     </div>
 
                     
@@ -183,6 +124,7 @@
 
 <script>
 import axios from 'axios';
+import { set } from 'vue/types/umd';
 
     export default {
         props: ['vuser'],
@@ -200,14 +142,108 @@ import axios from 'axios';
                 },
                 user: null,
                 panel: 'productos',
-                modo: 'visor'
+                modo: 'visor',
+                categorias: [],
+                productos: [],
+                producto: {
+                    id: null,
+                    nombre: '',
+                    cantidad: '',
+                    unidad: '',
+                    precio_unidad: '',
+                    categoria_id: null,
+                }
             }
         },
         mounted() {
             this.user = this.vuser;
-            this.fetchMovimientos();
+            //this.fetchMovimientos();
+            this.getCategorias();
+            this.getProductos();    
         },
         methods: {
+
+            getCategorias: async function() {
+                const response = await axios.get('/api/categorias');
+
+                if(response.data.status === 'success'){
+                    this.categorias = response.data.categorias;
+                }else{
+                    alert('Error al cargar las categorias');
+                }
+            },
+            getProductos: async function() {
+                const response = await axios.get('/api/productos');
+
+                if(response.data.status === 'success'){
+                    this.productos = response.data.productos;
+                }else{
+                    alert('Error al cargar los productos');
+                }
+            },
+
+            saveProducto: async function() {
+                try {
+
+                    if(this.producto.nombre === null || this.producto.nombre === ''){
+                        alert('Ingresa un nombre');
+                        return;
+                    }
+                    if(this.producto.precio_unidad === null || this.producto.precio_unidad === ''){
+                        alert('Ingresa un precio');
+                        return;
+                    }
+                    if(this.producto.categoria_id === null || this.producto.categoria_id === ''){
+                        alert('Selecciona una categoria');
+                        return;
+                    }
+
+                    if(this.producto.id === null){
+                        const response = await axios.post('/api/productos', this.producto);
+
+                        if(response.data.status === 'success'){
+                            this.producto = {
+                                    nombre: '',
+                                    precio_unidad: 0,
+                                    categoria_id: null
+                                }
+                            this.getProductos();
+                            this.modo = 'visor';
+                        }else{
+                            alert('Error al guardar el producto');
+                        }
+
+                    }else{
+                        const response = await axios.put('/api/productos/'+this.producto.id, this.producto);
+
+                        if(response.data.status === 'success'){
+                            this.producto = {
+                                    nombre: '',
+                                    precio_unidad: 0,
+                                    categoria_id: null
+                                }
+                            this.getProductos();
+                            this.modo = 'visor';
+                        }else{
+                            alert('Error al guardar el producto');
+                        }
+                    }
+
+                    
+                    
+                } catch (e) {
+
+                    alert('Error al guardar el producto');
+
+                    
+                }
+            },
+
+            setProducto: function(producto) {
+                this.producto = producto;
+                this.modo = 'edicion';
+            },
+
             fetchMovimientos: async function() {
 
                 //send crsf token

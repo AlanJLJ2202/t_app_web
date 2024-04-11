@@ -33,5 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/api/transactions', [TransactionsController::class, 'register_transaction']);
 
     Route::get('/listas_compras', [ListasComprasController::class, 'view_listas'])->name('listas_compras');
+    Route::get('/api/listas_compras', [ListasComprasController::class, 'get_listas']);
+    Route::get('/api/categorias', [ListasComprasController::class, 'get_categorias']);
+    Route::get('/api/productos', [ListasComprasController::class, 'get_productos']);
+    Route::post('/api/listas_compras', [ListasComprasController::class, 'register_lista']);
+    Route::post('/api/productos', [ListasComprasController::class, 'register_producto']);
+    Route::put('/api/productos/{id}', [ListasComprasController::class, 'update_producto']);
+    Route::post('/api/productos_categoria', [ListasComprasController::class, 'register_producto_categoria']);
 });
 

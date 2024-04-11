@@ -9,6 +9,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\ListaCompra;
+use App\Models\ProductoCategoria;
+use App\Models\Producto;
+
 class ListasComprasController extends Controller
 {
 
@@ -47,6 +51,152 @@ class ListasComprasController extends Controller
             return response()->json($data, 500);
         }
     }
+
+    public function get_categorias(){
+        try {
+
+            $categorias = ProductoCategoria::all();
+
+            $data = [
+                'status' => 'success',
+                'categorias' => $categorias
+            ];
+
+            return response()->json($data, 200);
+        } catch (\Exception $e) {
+            $data = [
+                'status' => 'error',
+                'error' => $e->getMessage()
+            ];
+
+            \Log::error($e->getMessage());
+
+            return response()->json($data, 500);
+        }
+    }
+
+    public function get_productos(){
+        try {
+
+            $productos = Producto::all();
+
+            $data = [
+                'status' => 'success',
+                'productos' => $productos
+            ];
+
+            return response()->json($data, 200);
+        } catch (\Exception $e) {
+            $data = [
+                'status' => 'error',
+                'error' => $e->getMessage()
+            ];
+
+            \Log::error($e->getMessage());
+
+            return response()->json($data, 500);
+        }
+    }
+
+    public function register_lista(Request $request){
+        try {
+
+            $user = Auth::user();
+
+            $lista = new ListaCompra();
+            $lista->user_id = $user->id;
+            $lista->date = $request->date;
+            $lista->save();
+
+            $data = [
+                'status' => 'success',
+                'lista' => $lista
+            ];
+
+            return response()->json($data, 200);
+        } catch (\Exception $e) {
+            $data = [
+                'status' => 'error',
+                'error' => $e->getMessage()
+            ];
+
+            \Log::error($e->getMessage());
+
+            return response()->json($data, 500);
+        }
+    }
+
+    public function register_producto(Request $request){
+        try {
+
+            \Log::info($request->all());
+
+            $user = Auth::user();
+
+            $producto = new Producto();
+            $producto->nombre = $request->nombre;
+            $producto->cantidad = $request->cantidad;
+            $producto->unidad = $request->unidad;
+            $producto->precio_unidad = $request->precio_unidad;
+            $producto->categoria_id = $request->categoria_id;
+            $producto->save();
+
+            $data = [
+                'status' => 'success',
+                'producto' => $producto
+            ];
+
+            return response()->json($data, 200);
+        } catch (\Exception $e) {
+            $data = [
+                'status' => 'error',
+                'error' => $e->getMessage()
+            ];
+
+            \Log::error($e->getMessage());
+
+            return response()->json($data, 500);
+        }
+    }
+
+
+
+    public function update_producto(Request $request){
+        try {
+
+            \Log::info($request->all());
+
+            $user = Auth::user();
+
+            $producto = Producto::find($request->id);
+            $producto->nombre = $request->nombre;
+            $producto->cantidad = $request->cantidad;
+            $producto->unidad = $request->unidad;
+            $producto->precio_unidad = $request->precio_unidad;
+            $producto->categoria_id = $request->categoria_id;
+            $producto->save();
+
+            $data = [
+                'status' => 'success',
+                'producto' => $producto
+            ];
+
+            return response()->json($data, 200);
+
+        } catch (\Exception $e) {
+
+            $data = [
+                'status' => 'error',
+                'error' => $e->getMessage()
+            ];
+
+            \Log::error($e->getMessage());
+
+            return response()->json($data, 500);
+        }
+
+    }
+            
 
 
 }
